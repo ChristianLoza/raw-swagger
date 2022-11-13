@@ -1,0 +1,84 @@
+---
+openapi: 3.0.0
+info:
+  title: miso-gestion-terceros API
+  version: 1.0-SNAPSHOT
+paths:
+  /thrid-service:
+    get:
+      tags:
+      - Thrid Service
+      responses:
+        "200":
+          description: OK
+    post:
+      tags:
+      - Thrid Service
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThridEntity'
+      responses:
+        "200":
+          description: OK
+  /thrid-service/{id}:
+    get:
+      tags:
+      - Thrid Service
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: OK
+    put:
+      tags:
+      - Thrid Service
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThridEntity'
+      responses:
+        "200":
+          description: OK
+    delete:
+      tags:
+      - Thrid Service
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: OK
+components:
+  schemas:
+    ThridEntity:
+      type: object
+      properties:
+        nameThird:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        numberContact:
+          type: string
+        typeThrid:
+          type: string
