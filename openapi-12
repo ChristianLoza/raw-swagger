@@ -1,0 +1,120 @@
+---
+openapi: 3.0.3
+info:
+  title: miso-gestion-eventos API
+  version: 1.0-SNAPSHOT
+paths:
+  /event-register:
+    get:
+      tags:
+      - Event Register Service
+      responses:
+        "200":
+          description: OK
+    post:
+      tags:
+      - Event Register Service
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventRegister'
+      responses:
+        "200":
+          description: OK
+  /event-register/{id}:
+    get:
+      tags:
+      - Event Register Service
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: OK
+  /event-thrid:
+    get:
+      tags:
+      - Event Thrid Service
+      responses:
+        "200":
+          description: OK
+    post:
+      tags:
+      - Event Thrid Service
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventThrid'
+      responses:
+        "200":
+          description: OK
+  /event-thrid/{id}:
+    get:
+      tags:
+      - Event Thrid Service
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: OK
+    delete:
+      tags:
+      - Event Thrid Service
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: OK
+components:
+  schemas:
+    Date:
+      format: date
+      type: string
+      example: 2022-03-10
+    EventRegister:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        nameEvent:
+          type: string
+        dateEvent:
+          $ref: '#/components/schemas/Date'
+        description:
+          type: string
+        eventOrigin:
+          type: string
+        eventDestination:
+          type: string
+        city:
+          type: string
+    EventThrid:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        idThrid:
+          format: int64
+          type: integer
+        eventRegisterList:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventRegister'
