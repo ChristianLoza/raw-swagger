@@ -1,0 +1,110 @@
+---
+openapi: 3.0.0
+info:
+  title: miso-user API
+  version: 1.0-SNAPSHOT
+paths:
+  /identification_type:
+    get:
+      tags:
+      - Identification Service
+      responses:
+        "200":
+          description: OK
+    post:
+      tags:
+      - Identification Service
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenericName'
+      responses:
+        "200":
+          description: OK
+  /login:
+    post:
+      tags:
+      - User Login Service
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InputLogin'
+      responses:
+        "200":
+          description: OK
+  /user_register:
+    post:
+      tags:
+      - User Service
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InputRegisterUser'
+      responses:
+        "200":
+          description: OK
+  /user_type:
+    post:
+      tags:
+      - User Type Service
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenericName'
+      responses:
+        "200":
+          description: OK
+components:
+  schemas:
+    GenericName:
+      type: object
+      properties:
+        name:
+          type: string
+    InputLogin:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+    InputRegisterUser:
+      type: object
+      properties:
+        name:
+          type: string
+        lastName:
+          type: string
+        identificationType:
+          type: string
+        identificationNumber:
+          type: string
+        gender:
+          type: string
+        age:
+          format: int32
+          type: integer
+        height:
+          type: number
+        birthdUbication:
+          format: int64
+          type: integer
+        homeUbication:
+          format: int64
+          type: integer
+        username:
+          type: string
+        password:
+          type: string
+        isVegan:
+          format: int32
+          type: integer
+        isvegetarian:
+          format: int32
+          type: integer
+        userType:
+          type: string
